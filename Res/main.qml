@@ -6,15 +6,13 @@ import QtQuick.Layouts 1.1
 
 Item {
     id: rootWindow
-    width: 800
-    height: 600
 
-    Item {
+    RowLayout {
         id: topBar
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: 40
+        height: Layout.minimumHeight
 
         Rectangle {
             anchors.fill: parent
@@ -22,19 +20,8 @@ Item {
             opacity: 0.65
         }
 
-        RowLayout {
-            id: menuButtons
-            anchors.fill: parent
-            anchors.margins: 5
-            spacing: 10
-
-            width: Layout.minimumWidth
-            height: Layout.minimumHeight
-
-            Button {
-                id: button_captureCursor
-                text: "Do something"
-            }
+        Button {
+            text: "Hey"
         }
     }
 }

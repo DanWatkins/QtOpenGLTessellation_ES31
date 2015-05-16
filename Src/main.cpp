@@ -1,15 +1,15 @@
 #include <QtGui/QGuiApplication>
 #include <QtQuick/QQuickView>
 
+#include "appwindow.h"
 
 int main(int argc, char *argv[])
 {
 	QGuiApplication app(argc, argv);
 
-	QQuickView view;
-	view.setResizeMode(QQuickView::SizeRootObjectToView);
-	view.setSource(QUrl(QStringLiteral("qrc:/Res/main.qml")));
-	view.show();
+	AppWindow appWindow;
+	appWindow.init();
+	appWindow.show();
 
     return app.exec();
 }

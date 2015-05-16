@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-SOURCES += Src/main.cpp
+
 
 RESOURCES += qml.qrc
 
@@ -11,3 +11,10 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+HEADERS += \
+    Src/appwindow.h
+
+SOURCES += \
+    Src/appwindow.cpp \
+    Src/main.cpp
