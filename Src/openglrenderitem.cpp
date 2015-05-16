@@ -1,4 +1,4 @@
-#include "openglrenderitem.h"
+#include "OpenGLRenderItem.h"
 #include <QtQuick/QQuickWindow>
 
 OpenGLRenderItem::OpenGLRenderItem()
@@ -43,10 +43,7 @@ void OpenGLRenderItem::cameraFinishedRendering()
 
 void OpenGLRenderItem::render()
 {
-	glClearColor(1.0f, 0.3f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
 	emit readyToRender();
-
 
 	window()->update();
 }

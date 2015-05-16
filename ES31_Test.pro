@@ -1,6 +1,5 @@
 TEMPLATE = app
-
-QT += qml quick widgets
+QT += gui qml quick
 CONFIG += c++11
 
 
@@ -13,10 +12,14 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    Src/appwindow.h \
-    Src/openglrenderitem.h
+    Src/TessellationRenderer.h \
+    Src/BaseOpenGLFunctions.h \
+    Src/AppWindow.h \
+    Src/OpenGLRenderItem.h
 
 SOURCES += \
-    Src/appwindow.cpp \
-    Src/main.cpp \
-    Src/openglrenderitem.cpp
+    Src/TessellationRenderer.cpp \
+    Src/BaseOpenGLFunctions.cpp \
+    Src/AppWindow.cpp \
+    Src/Main.cpp \
+    Src/OpenGLRenderItem.cpp

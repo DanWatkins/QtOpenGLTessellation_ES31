@@ -1,5 +1,5 @@
-#include "appwindow.h"
-#include "openglrenderitem.h"
+#include "AppWindow.h"
+#include "OpenGLRenderItem.h"
 
 #include <QtGui/QSurfaceFormat>
 
@@ -37,8 +37,18 @@ void AppWindow::init()
 	}
 
 	auto openglItem = rootObject()->findChild<OpenGLRenderItem*>("mainRenderable");
-	QObject::connect(openglItem, &OpenGLRenderItem::readyToRender, []
+	QObject::connect(openglItem, &OpenGLRenderItem::readyToRender, [this]
 	{
-		qDebug() << "Ready to render, bitch";
+		qDebug() << "Ready to render";
+
+		if (mTessellationRenderer.isInitialized())
+			mTessellationRenderer.render();
+	});
+
+	QObject::connect(this, &QQuickView::sceneGraphInitialized, [this]
+	{
+		qDebug() << "Initializing since screne graph is now ready";
+
+		mTessellationRenderer.init();
 	});
 }
