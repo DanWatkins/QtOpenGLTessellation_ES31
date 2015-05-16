@@ -3,6 +3,8 @@
 
 #include "BaseOpenGLFunctions.h"
 
+#include <QtGui/QOpenGLShaderProgram>
+
 class TessellationRenderer : protected BaseOpenGLFunctions
 {
 public:
@@ -15,6 +17,10 @@ public:
 
 private:
 	bool mIsInitialized = false;
+	QOpenGLShaderProgram mShaderProgram;
+	GLuint mVao = -1;
+
+	bool loadShaders();
 };
 
 #endif // TESSELLATIONRENDERER_H

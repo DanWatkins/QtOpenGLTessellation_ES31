@@ -19,7 +19,6 @@ public slots:
 	void sync();
 	void cameraFinishedRendering();
 
-
 private slots:
 	void handleWindowChanged(QQuickWindow *window);
 	void render();

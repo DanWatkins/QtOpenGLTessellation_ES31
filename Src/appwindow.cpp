@@ -39,16 +39,14 @@ void AppWindow::init()
 	auto openglItem = rootObject()->findChild<OpenGLRenderItem*>("mainRenderable");
 	QObject::connect(openglItem, &OpenGLRenderItem::readyToRender, [this]
 	{
-		qDebug() << "Ready to render";
-
-		if (mTessellationRenderer.isInitialized())
-			mTessellationRenderer.render();
+		if (mTessellationRenderer && mTessellationRenderer->isInitialized())
+			mTessellationRenderer->render();
 	});
 
 	QObject::connect(this, &QQuickView::sceneGraphInitialized, [this]
 	{
 		qDebug() << "Initializing since screne graph is now ready";
-
-		mTessellationRenderer.init();
+		mTessellationRenderer = std::make_unique<TessellationRenderer>();
+		mTessellationRenderer->init();
 	});
 }

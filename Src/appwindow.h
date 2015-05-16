@@ -2,7 +2,7 @@
 #define APPWINDOW_H
 
 #include <QtQuick/QQuickView>
-
+#include <memory>
 #include "TessellationRenderer.h"
 
 class AppWindow : public QQuickView
@@ -13,7 +13,7 @@ public:
 	void init();
 
 private:
-	TessellationRenderer mTessellationRenderer;
+	std::unique_ptr<TessellationRenderer> mTessellationRenderer;
 };
 
 #endif // APPWINDOW_H

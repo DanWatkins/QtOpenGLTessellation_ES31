@@ -13,7 +13,7 @@ void OpenGLRenderItem::handleWindowChanged(QQuickWindow *window)
 	if (window)
 	{
 		QObject::connect(window, SIGNAL(beforeSynchronizing()), this, SLOT(sync()), Qt::DirectConnection);
-		QObject::connect(window, SIGNAL(sceneGraphInvalidated()), this, SLOT(cleanup()), Qt::DirectConnection);
+		//TODO QObject::connect(window, SIGNAL(sceneGraphInvalidated()), this, SLOT(cleanup()), Qt::DirectConnection);
 		window->setClearBeforeRendering(false);
 	}
 }
@@ -43,7 +43,9 @@ void OpenGLRenderItem::cameraFinishedRendering()
 
 void OpenGLRenderItem::render()
 {
+	qDebug() << "Emiting readyToRender";
 	emit readyToRender();
+	qDebug() << "Before emitting ready to rener";
 
 	window()->update();
 }

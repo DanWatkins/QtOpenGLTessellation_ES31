@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>Res/main.qml</file>
+        <file>Res/test.vs.glsl</file>
+        <file>Res/test.fs.glsl</file>
+        <file>Res/test.tcs.glsl</file>
+        <file>Res/test.tes.glsl</file>
     </qresource>
 </RCC>

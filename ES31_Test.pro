@@ -1,6 +1,6 @@
 TEMPLATE = app
 QT += gui qml quick
-CONFIG += c++11
+CONFIG += c++14
 
 
 RESOURCES += qml.qrc
@@ -23,3 +23,4 @@ SOURCES += \
     Src/AppWindow.cpp \
     Src/Main.cpp \
     Src/OpenGLRenderItem.cpp
+
