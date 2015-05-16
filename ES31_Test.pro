@@ -1,7 +1,7 @@
 TEMPLATE = app
 
 QT += qml quick widgets
-
+CONFIG += c++11
 
 
 RESOURCES += qml.qrc
@@ -13,8 +13,10 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    Src/appwindow.h
+    Src/appwindow.h \
+    Src/openglrenderitem.h
 
 SOURCES += \
     Src/appwindow.cpp \
-    Src/main.cpp
+    Src/main.cpp \
+    Src/openglrenderitem.cpp

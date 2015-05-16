@@ -1,4 +1,5 @@
 #include "appwindow.h"
+#include "openglrenderitem.h"
 
 #include <QtGui/QSurfaceFormat>
 
@@ -10,8 +11,14 @@ AppWindow::AppWindow()
 
 void AppWindow::init()
 {
-	QQuickView::setResizeMode(QQuickView::SizeRootObjectToView);
-	QQuickView::setSource(QUrl(QStringLiteral("qrc:/Res/main.qml")));
+	//configure qml stuff
+	{
+		qmlRegisterType<OpenGLRenderItem>("ES31_Test", 1, 0,
+										  "OpenGLRenderer");
+
+		QQuickView::setResizeMode(QQuickView::SizeRootObjectToView);
+		QQuickView::setSource(QUrl(QStringLiteral("qrc:/Res/main.qml")));
+	}
 
 	//configure the surface format
 	{
@@ -20,7 +27,7 @@ void AppWindow::init()
 
 		#if defined(Q_OS_ANDROID)
 			format.setRenderableType(QSurfaceFormat::OpenGLES);
-			format.setVersion(3, 0);
+			format.setVersion(3, 1);
 		#else
 			format.setRenderableType(QSurfaceFormat::OpenGL);
 			format.setVersion(4, 1);
@@ -28,4 +35,10 @@ void AppWindow::init()
 
 		setFormat(format);
 	}
+
+	auto openglItem = rootObject()->findChild<OpenGLRenderItem*>("mainRenderable");
+	QObject::connect(openglItem, &OpenGLRenderItem::readyToRender, []
+	{
+		qDebug() << "Ready to render, bitch";
+	});
 }

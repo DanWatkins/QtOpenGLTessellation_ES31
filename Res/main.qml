@@ -4,6 +4,8 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 
+import ES31_Test 1.0
+
 Item {
     id: rootWindow
 
@@ -23,5 +25,15 @@ Item {
         Button {
             text: "Hey"
         }
+    }
+
+    OpenGLRenderer {
+        id: mainRenderable
+        objectName: "mainRenderable"
+
+        anchors.left: parent.left
+        anchors.top: topBar.bottom
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
     }
 }
